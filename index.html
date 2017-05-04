@@ -11,14 +11,13 @@
 
 <body ng-controller="HeroController as vm">
   <p>Search for:</p><input type="text" ng-model="vm.heroSearch">
-  <div ng-repeat="hero in vm.hero | filter:{name: vm.heroSearch}" ng-class ="{'marvel': hero.affiliation == 'Marvel', 'dc': hero.affiliation == 'D.C'}">
+  <div ng-repeat="hero in vm.hero | filter:{name: vm.heroSearch}" ng-class ="hero.affiliation.toLowerCase()">
 
     <p> {{$index+1}}. {{hero.name}} - {{hero.number}} - {{hero.affiliation}}</p>
     <img ng-src='{{hero.image}}' ng-show="vm.viewImage[$index]" />
 
 
     <button ng-click="vm.viewImage[$index] = !vm.viewImage[$index]">View Pic</button>
-
   </div>
 </body>
 
